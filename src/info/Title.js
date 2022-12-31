@@ -4,15 +4,11 @@ import axios from "axios";
 function Title() {
 
     const [title, getTitle] = useState("");
-    
+    const api = "";
         useEffect(() => {
-            axios.get("https://api.nasa.gov/planetary/apod?", {
-                params: {
-                    api_key: "DEMO_KEY",
-                },
-            })
+            axios.get(`https://api.nasa.gov/planetary/apod?${api}`)
             .then(res => {
-                getTitle(res.data.title);
+            getTitle(res.data.title);
             })
             .catch(err => console.log(err))
 }, []);

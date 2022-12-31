@@ -3,12 +3,9 @@ import axios from "axios";
 
 function Description() {
     const [ desc, getDesc ] = useState("");
+    const api = "";
         useEffect(() => {
-            axios.get("https://api.nasa.gov/planetary/apod?", {
-                params: {
-                    api_key: "DEMO_KEY",
-                },
-            })
+            axios.get(`https://api.nasa.gov/planetary/apod?${api}`)
             .then(res => {
                 getDesc(res.data.explanation);                   
             })
