@@ -1,7 +1,8 @@
 import React from "react";
 import "./App.css";
-import Photo from './Photo';
-import Title from './Title';
+import Photo from './info/Photo';
+import Title from './info/Title';
+import Description from "./info/Desc";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <div className="container">
         <img src={`${Photo()}`} />
         <h2>{`${Title()}`}</h2>
-        <p></p>
+        <p>{`${Description()}`}</p>
       </div>
     </div>
   );
