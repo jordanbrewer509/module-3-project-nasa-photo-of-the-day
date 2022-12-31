@@ -10,7 +10,6 @@ function Description() {
                 },
             })
             .then(res => {
-                console.log(res.data); 
                 getDesc(res.data.explanation);                   
             })
             .catch(err => console.log(err));
