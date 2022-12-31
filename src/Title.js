@@ -1,23 +1,23 @@
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-// function Title() {
+function Title() {
 
-//     const [title, getTitle] = useState("");
+    const [title, getTitle] = useState("");
     
-//         useEffect(() => {
-//             axios.get("https://api.nasa.gov/planetary/apod?", {
-//                 params: {
-//                     api_key: "DEMO_KEY",
-//                 },
-//             })
-//             .then(res => {
-//                 console.log(res);
-//             })
-//             .catch(err => console.log(err))
-// }, []);
+        useEffect(() => {
+            axios.get("https://api.nasa.gov/planetary/apod?", {
+                params: {
+                    api_key: "DEMO_KEY",
+                },
+            })
+            .then(res => {
+                getTitle(res.data.title);
+            })
+            .catch(err => console.log(err))
+}, []);
 
-// return title;
-// }
+return title;
+}
 
-// export default Title;
+export default Title;
