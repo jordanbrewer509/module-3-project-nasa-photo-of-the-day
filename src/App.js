@@ -1,11 +1,6 @@
-import React from "react";
-
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import "./App.css";
-
-import Photo from './info/Photo';
-import Title from './info/Title';
-import Description from "./info/Desc";
-
 import styled from "styled-components";
 
 const StyledBackground = styled.div`
@@ -27,15 +22,29 @@ const StyledImg = styled.img`
 `
 
 function App() {
+
+  const [photos, getPhotos] = useState([]);
+  const [title, getTitle] = useState("");
+  const [desc, getDesc] = useState("");
+  const pokemon = Math.floor(Math.random() * 905);
+
+  useEffect(() => {
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}/`)
+      .then(res => {
+          getPhotos(res.data.sprites.front_default);
+          getTitle(res.data.species.name);
+          getDesc(`This Pokemon weighs ${res.data.weight} pounds!!`); 
+      })
+      .catch(err => console.log(err))
+  }, []);
+
   return (
     <StyledBackground className="App">
-      <h1>NASA Photo of the Day</h1>
+      <h1>Random Pokemon!</h1>
       <div className="container">
-        <img src={`${Photo()}`} />
-        <StyledText>
-          <h2>{`${Title()}`}</h2>
-          <p>{`${Description()}`}</p>
-        </StyledText>
+        <img src={`${photos}`} />
+        <h2>{`${title}`}</h2>
+        <p>{`${desc}`}</p>
       </div>
     </StyledBackground>
   );
