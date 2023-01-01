@@ -10,15 +10,29 @@ background-color: ${props => props.theme.primaryColor};
 
 const StyledText = styled.div`
 h2 {
+  font-size: 75px;
   display: flex;
   text-align: center;
-  justify-content: right;
+  justify-content: flex-end;
+  margin: 0 0 0 5px;
   color: ${props => props.theme.secondaryColor};
+}
+p {
+  display: flex;
+  text-align: center;
+  justify-content: flex-end;
+  margin: 0 0 0 5px;
+  color: ${props => props.theme.tertiaryColor};
 }
 `
 
 const StyledImg = styled.img`
-
+  border: 5px solid black;
+  height: 10%;
+  float: left;
+  display: flex; 
+  justify-content: flex-start;
+  margin: 0 5px;
 `
 
 function App() {
@@ -41,11 +55,11 @@ function App() {
   return (
     <StyledBackground className="App">
       <h1>Random Pokemon!</h1>
-      <div className="container">
-        <img src={`${photos}`} />
+      <StyledText className="container">
+        <StyledImg src={`${photos}`} />
         <h2>{`${title}`}</h2>
         <p>{`${desc}`}</p>
-      </div>
+      </StyledText>
     </StyledBackground>
   );
 }
